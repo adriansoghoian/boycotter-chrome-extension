@@ -1,0 +1,7 @@
+boycotter-alert {
+   min-width: 500px;
+   overflow-x: hidden;
+   background: 'red';
+   color: 'black';
+   font-family: sans-serif;
+ }

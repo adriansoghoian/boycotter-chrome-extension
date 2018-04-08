@@ -8,7 +8,7 @@ window.onload = function() {
       console.log("Successful parse!");
       console.log(request.data);
       identifiers = request.data.identifiers;
-      displayIdentifiers(identifiers)
+      displayIdentifiers(request.data.domain, identifiers)
     }
 
     if (request.identifier && request.identifier == "extensionPressed") {
@@ -22,22 +22,11 @@ function sendUrl() {
   chrome.runtime.sendMessage({message: "parse", url: tabUrl}, function(response) {});
 }
 
-function displayIdentifiers(identifiers) {
-    var asinText = "n/a";
-    if (identifiers["ASIN"]) {
-      asinText = identifiers["ASIN"];
+function displayIdentifiers(domain, identifiers) {
+    var identifiers_text = "None :(";
+    if (identifiers.length > 0) {
+      identifiers_text = identifiers.join(", ");
     }
-
-    var upcText = "n/a";
-    if (identifiers["UPC"]) {
-      upcText = identifiers["UPC"];
-    }
-
-    var otherText = "n/a";
-    if (identifiers["unknown"]) {
-      otherText = identifiers["unknown"];
-    }
-
-    var text = "ASIN: " + asinText + ", UPC: " + upcText + ".";
+    var text = "DOMAIN: " + domain + ". IDENTIFIERS: " + identifiers_text;
     alert(text);
 }

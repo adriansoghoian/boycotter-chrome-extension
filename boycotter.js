@@ -7,8 +7,8 @@ window.onload = function() {
     if (request.parseResult && request.parseResult == "success") {
       console.log("Successful parse!");
       console.log(request.data);
-      identifiers = request.data.identifiers;
-      displayIdentifiers(request.data.domain, identifiers)
+      description = request.data.description;
+      displayResults(description)
     }
 
     if (request.identifier && request.identifier == "extensionPressed") {
@@ -22,11 +22,6 @@ function sendUrl() {
   chrome.runtime.sendMessage({message: "parse", url: tabUrl}, function(response) {});
 }
 
-function displayIdentifiers(domain, identifiers) {
-    var identifiers_text = "None :(";
-    if (identifiers.length > 0) {
-      identifiers_text = identifiers.join(", ");
-    }
-    var text = "DOMAIN: " + domain + ". IDENTIFIERS: " + identifiers_text;
-    alert(text);
+function displayResults(description) {
+    alert(description);
 }

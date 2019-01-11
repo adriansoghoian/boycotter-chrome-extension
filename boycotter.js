@@ -1,11 +1,16 @@
 var tabUrl = null;
 
 var identifiers = {};
+var parsed = false;
+
+sendUrl();
 
 window.onload = function() {
+  sendUrl();
+
   chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-    if (request.parseResult && request.parseResult == "success") {
-      console.log("Successful parse!");
+    if (request.parseResult && request.parseResult == "success" && !parsed) {
+      parsed = true;
       console.log(request.data);
       description = request.data.description;
       displayResults(description)

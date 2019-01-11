@@ -7,6 +7,7 @@
 
   "permissions": [
     "tabs",
+    "http://127.0.0.1:8000/*",
     "https://immense-earth-17384.herokuapp.com/*"
 ],
   "browser_action": {

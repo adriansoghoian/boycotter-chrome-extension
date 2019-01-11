@@ -17,7 +17,7 @@ chrome.browserAction.onClicked.addListener(function (tab) {
 
 function parseUrl(url) {
   $.ajax({
-      url: 'https://immense-earth-17384.herokuapp.com/products/parse',
+      url: 'http://127.0.0.1:8000/products/parse',
       type: 'post',
       data: {
           url: url
